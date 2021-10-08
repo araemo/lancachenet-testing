@@ -201,6 +201,9 @@ fi
 if [ "${ENABLE_DNSSEC_VALIDATION}" = true ] ; then
 	echo "Enabling dnssec validation"
 	sed -i "s/dnssec-validation no/dnssec-validation auto/" /etc/bind/named.conf.options
+else
+	echo "Disabling dnssec validation"
+	sed -i "s/dnssec-validation no//" /etc/bind/named.conf.options
 fi
 
 if ! [ -z "${MAX_DNSCACHE_TTL}" ] ; then
